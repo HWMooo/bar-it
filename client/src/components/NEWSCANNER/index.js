@@ -88,9 +88,9 @@ function NEWSCANNER() {
                     width: 10,
                     height: 10,
                     facingMode: "enviroment",
-                    //focusMode: 'continuous',
+                    focusMode: 'continuous',
                     //cameraid: 
-                    //sourceId : cameraTypes[4]
+                    sourceId : cameraTypes[4]
                 },
             },
             decoder: {
