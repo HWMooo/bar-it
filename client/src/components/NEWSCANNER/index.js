@@ -66,9 +66,9 @@ function NEWSCANNER() {
                 
         //         );
         //     })
-            .catch(function (err) {
-                console.log(err.name + ": " + err.message);
-            });
+            // .catch(function (err) {
+            //     console.log(err.name + ": " + err.message);
+            // });
     }, [])
 
 
@@ -78,8 +78,8 @@ function NEWSCANNER() {
         }
     }, [scannerRunning])
 
-    console.log("cameraTypes[1] :", cameraTypes[1])
-    console.log("cameratypes = ", cameraTypes)
+    // console.log("cameraTypes[1] :", cameraTypes[1])
+    // console.log("cameratypes = ", cameraTypes)
 
     function startScanner() {
         console.log("if you dont see this something is odd with netlify")
