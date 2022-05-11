@@ -102,7 +102,7 @@ function BCS() {
             Quagga.start();
             const track = Quagga.CameraAccess.getActiveTrack(); sleep(5000); 
             var capabilities = track.getCapabilities(); 
-            track.applyConstraints({ advanced: [{zoom: capabilities.zoom.max}]})
+            track.applyConstraints({ advanced: [{zoom: 2.5}]})
                 .catch(e => console.log(e));
             setScannerRunning(true)
             document.querySelector('canvas').style.display = "inline";
