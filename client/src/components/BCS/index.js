@@ -191,6 +191,7 @@ function BCS(props) {
     <section id="scanner-container"></section>
     <input type="button" id="btn" value="Start/Stop the scanner" onClick={onClick}/>
     <h1>barcode: {barCode}</h1>
+    <h2>if you dont see this something is odd</h2>
     
     
     
