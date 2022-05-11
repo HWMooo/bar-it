@@ -83,7 +83,7 @@ function NEWSCANNER() {
                 constraints: {
                     width: 1000,
                     height: 1000,
-                    facingMode: "user",
+                    facingMode: "enviroment",
                     focusMode: 'continuous'
                 },
             },
