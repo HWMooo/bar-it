@@ -103,8 +103,8 @@ function NEWSCANNER() {
                 readers: [
                     "ean_reader"
                 ],
-                halfSample: true,
-                patchSize: "x-large",
+                halfSample: false,
+                patchSize: "small",
                 debug: {
                     showCanvas: true,
                     showPatches: true,
