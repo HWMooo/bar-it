@@ -85,11 +85,11 @@ function NEWSCANNER() {
                 type: "LiveStream",
                 target: document.querySelector('#scanner-container'),
                 constraints: {
-                    width: 640,
-                    height: 480,
+                    width: 480,
+                    height: 320,
                     facingMode: "enviroment",
                     focusMode: 'continuous',
-                    cameraid: cameraTypes[3]
+                    cameraid: cameraTypes[4]
                 },
             },
             decoder: {
