@@ -51,14 +51,14 @@ function BCS(props) {
     useEffect(() => {
         startScanner()
         navigator.mediaDevices.enumerateDevices()
-        .then(function (devices) {
+            .then(function (devices) {
                 devices.forEach(function (device) {
-                console.log(device.kind + ": " + device.label +
+                warn(device.kind + ": " + device.label +
                     " id = " + device.deviceId);
             });
         })
-        .catch(function (err) {
-            console.log(err.name + ": " + err.message);
+            .catch(function (err) {
+                console.log(err.name + ": " + err.message);
         });
     }, [])
 
