@@ -53,22 +53,22 @@ function NEWSCANNER() {
     useEffect(() => {
         startScanner()
         console.log("if you dont see this something is odd with netlify")
-        // navigator.mediaDevices.enumerateDevices()
-        //     .then(function (devices) {
-        //         devices.forEach(function (device) {
-        //             alert(device.kind + ": " + device.label +
-        //                 " id = " + device.deviceId);
-        //                 array.push(device.deviceId)
-        //                 console.log(array)
-        //                 setCameraTypes(array)
-        //         }
+        navigator.mediaDevices.enumerateDevices()
+            .then(function (devices) {
+                devices.forEach(function (device) {
+                    alert(device.kind + ": " + device.label +
+                        " id = " + device.deviceId);
+                        array.push(device.deviceId)
+                        console.log(array)
+                        setCameraTypes(array)
+                }
 
                 
-        //         );
-        //     })
-            // .catch(function (err) {
-            //     console.log(err.name + ": " + err.message);
-            // });
+                );
+            })
+            .catch(function (err) {
+                console.log(err.name + ": " + err.message);
+            });
     }, [])
 
 
