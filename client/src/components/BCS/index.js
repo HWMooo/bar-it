@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
 import { useEffect } from "react"
 import axios from 'axios';
+import './styles.css'
 
 
 
