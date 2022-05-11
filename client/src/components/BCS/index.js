@@ -65,10 +65,10 @@ function BCS() {
         Quagga.init({
             inputStream: {
                 name: "Live",
+                size: 1920,
                 type: "LiveStream",
                 target: document.querySelector('#scanner-container'),
                 constraints: {
-                    width: 800,
                     facingMode: "environment"
                 },
             },
