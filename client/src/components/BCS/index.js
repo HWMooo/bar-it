@@ -66,7 +66,7 @@ function BCS() {
                 inputStream : {
         name : "Live",
         type : "LiveStream",
-        target: document.querySelector('#interactive'),
+        target: document.querySelector('#scanner-container'),
         constraints: {
             width: 1980,
             height: 1080,
