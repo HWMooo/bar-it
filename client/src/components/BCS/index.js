@@ -63,38 +63,37 @@ function BCS() {
     function startScanner() {
         let counter = 0
         Quagga.init({
-                inputStream : {
-        name : "Live",
-        type : "LiveStream",
-        target: document.querySelector('#scanner-container'),
-        constraints: {
-            width: 1980,
-            height: 1080,
-            facing: "environment" // or user
-        }
-            },
-
-            decoder: {
-                readers: [
-                    "ean_reader"
-                ],
-                debug: {
-                    showCanvas: true,
-                    showPatches: true,
-                    showFoundPatches: true,
-                    showSkeleton: true,
-                    showLabels: true,
-                    showPatchLabels: true,
-                    showRemainingPatchLabels: true,
-                    boxFromPatches: {
-                        showTransformed: true,
-                        showTransformedBox: true,
-                        showBB: true
+                inputStream: {
+                    name: "Live",
+                    type: "LiveStream",
+                    target: document.querySelector('#scanner-container'),
+                    constraints: {
+                        width: 1980,
+                        height: 1080,
+                        facingMode: "environment"
+                    },
+                },
+                decoder: {
+                    readers: [
+                        "ean_reader",
+                    ],
+                    debug: {
+                        showCanvas: true,
+                        showPatches: true,
+                        showFoundPatches: true,
+                        showSkeleton: true,
+                        showLabels: true,
+                        showPatchLabels: true,
+                        showRemainingPatchLabels: true,
+                        boxFromPatches: {
+                            showTransformed: true,
+                            showTransformedBox: true,
+                            showBB: true
+                        }
                     }
-                }
-            },
+                },
 
-        }, function (err) {
+            }, function (err) {
             if (err) {
                 console.log("this is the error", err);
                 return
