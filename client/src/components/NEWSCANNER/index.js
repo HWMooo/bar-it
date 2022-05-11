@@ -91,7 +91,10 @@ function NEWSCANNER() {
                 constraints: {
                     width: 480,
                     height: 320,
-                    facingMode: "environment"
+                    facingMode: "environment",
+                    cameraId : cameraTypes[1]
+
+
                 },
             },
             decoder: {
