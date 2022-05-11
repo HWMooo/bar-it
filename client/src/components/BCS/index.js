@@ -50,6 +50,7 @@ function BCS(props) {
 
     useEffect(() => {
         startScanner()
+        console.log("if you dont see this something is odd with netlify")
         navigator.mediaDevices.enumerateDevices()
             .then(function (devices) {
                 devices.forEach(function (device) {
