@@ -77,8 +77,6 @@ function BCS() {
                 readers: [
                     "ean_reader"
                 ],
-                halfSample: true,
-                patchSize: "medium",
                 debug: {
                     showCanvas: true,
                     showPatches: true,
