@@ -63,16 +63,20 @@ function BCS() {
     function startScanner() {
         let counter = 0
         Quagga.init({
-            inputStream: {
-                name: "Live",
-                type: "LiveStream",
-                target: document.querySelector('#scanner-container'),
-                constraints: {
-                    width: { min: 640, ideal: 1920, max: 4096 },
-                    height: { min: 480, ideal: 1080, max: 2400 },
-                    facingMode: "environment",
-                },
-            },
+        inputStream: {
+          type: 'LiveStream',
+          target: document.querySelector('#scanner-container'),
+          constraints: {
+            width: 640,
+            height: 480,
+            facingMode: 'environment', // or user
+          },
+        },
+        locator: {
+          patchSize: 'medium',
+          halfSample: true,
+        },
+        numOfWorkers: 4,
             decoder: {
                 readers: [
                     "ean_reader"
