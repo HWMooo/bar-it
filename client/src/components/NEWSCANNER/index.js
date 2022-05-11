@@ -89,7 +89,7 @@ function NEWSCANNER() {
                     height: 320,
                     facingMode: "enviroment",
                     focusMode: 'continuous',
-                    //cameraid: 
+                    cameraid: cameraTypes[4],
                     sourceId : cameraTypes[4]
                 },
             },
