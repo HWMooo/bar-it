@@ -91,10 +91,10 @@ function NEWSCANNER() {
                 constraints: {
                     width: 640,
                     height: 480,
-                    facingMode: "user",
+                    //facingMode: "user",
                     //cameraId : cameraTypes[1],
                     //sourceId : cameraTypes[1]
-                    //deviceId: cameraTypes[1]
+                    deviceId: "" + cameraTypes[3]
 
 
                 },
