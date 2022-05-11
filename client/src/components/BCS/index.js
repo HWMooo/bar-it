@@ -69,7 +69,7 @@ function BCS() {
                 target: document.querySelector('#scanner-container'),
                 constraints: {
                     width: 1480,
-                    height: 100%,
+                    height: 340,
                     facingMode: "environment"
                 },
             },
