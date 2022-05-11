@@ -94,7 +94,7 @@ function NEWSCANNER() {
                     //facingMode: "environment",
                     //cameraId : cameraTypes[1],
                     //sourceId : cameraTypes[1]
-                    deviceId: cameraTypes[1]
+                    //deviceId: cameraTypes[1]
 
 
                 },
@@ -104,7 +104,7 @@ function NEWSCANNER() {
                     "ean_reader"
                 ],
                 halfSample: true,
-                patchSize: "small",
+                patchSize: "x-small",
                 debug: {
                     showCanvas: true,
                     showPatches: true,
