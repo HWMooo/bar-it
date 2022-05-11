@@ -73,7 +73,7 @@ function BCS(props) {
                     height: 1080,
                     facingMode: "environment",
                     focusMode: 'continuous',
-                    deviceId: 0
+                    cameraId: 1
                 },
             },
             decoder: {
