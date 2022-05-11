@@ -91,7 +91,7 @@ function NEWSCANNER() {
                 constraints: {
                     width: 640,
                     height: 480,
-                    //facingMode: "environment",
+                    facingMode: "user",
                     //cameraId : cameraTypes[1],
                     //sourceId : cameraTypes[1]
                     //deviceId: cameraTypes[1]
@@ -103,7 +103,7 @@ function NEWSCANNER() {
                 readers: [
                     "ean_reader"
                 ],
-                halfSample: false,
+                halfSample: true,
                 patchSize: "small",
                 debug: {
                     showCanvas: true,
