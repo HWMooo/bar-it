@@ -51,16 +51,20 @@ function NEWSCANNER() {
 
     useEffect(() => {
         startScanner()
+        let array = []
         console.log("if you dont see this something is odd with netlify")
         navigator.mediaDevices.enumerateDevices()
             .then(function (devices) {
                 devices.forEach(function (device) {
                     alert(device.kind + ": " + device.label +
                         " id = " + device.deviceId);
-                        let array = []
                         array.push(device.deviceId)
                         setCameraTypes(array)
-                });
+
+                }
+
+                
+                );
             })
             .catch(function (err) {
                 console.log(err.name + ": " + err.message);
@@ -74,7 +78,7 @@ function NEWSCANNER() {
         }
     }, [scannerRunning])
 
-    alert("cameraTypes[4]", cameraTypes[4])
+    //alert("cameraTypes[4]", cameraTypes[4])
 
     function startScanner() {
         console.log("if you dont see this something is odd with netlify")
@@ -200,7 +204,7 @@ function NEWSCANNER() {
         <input type="button" id="btn" value="Start/Stop the scanner" onClick={onClick} />
         <h1>barcode: {barCode}</h1>
         <h1>barcode: {barCode}</h1>
-        <h3>changes here</h3>
+        <h3>changes seen here</h3>
 
 
 
