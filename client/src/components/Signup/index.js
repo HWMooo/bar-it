@@ -1,63 +1,98 @@
-import React, {useEffect, useState} from 'react'
-import validate from './validate';
+import React, { useState, useEffect } from 'react';
 
-export default function Signup({submitForm}) {
+export default function Signup() {
+  const [email, setEmail] = useState('');
+  const [password1, setPassword1] = useState('');
+  const [password2, setPassword2] = useState('');
+  const [username, setUsername] = useState('');
+  const [errors, setErrors] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-    const [values, setValues] = useState({
-        name: "",
-        email: "",
-        password: ""
-    });
+  useEffect(() => {
+    if (localStorage.getItem('token') !== null) {
+      window.location.replace('http://localhost:8081/dashboard');
+    } else {
+      setLoading(false);
+    }
+  }, []);
 
-    const [errors, setErrors] = useState({})
-    const [dataIsCorrect, setDataIsCorrect] = useState(false)
+  const onSubmit = e => {
+    e.preventDefault();
 
-    const handleChange = (e) => {
-        setValues({
-            ...values, 
-            [e.target.name]: e.target.value,
-        });
+    const user = {
+      email: email,
+      password1: password1,
+      password2: password2,
+      username: username
     };
 
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-        setErrors(validate(values));
-        setDataIsCorrect(true)
-    }
-
-    useEffect(() => {
-        if(Object.keys(errors).length === 0 && dataIsCorrect ){
-            submitForm(true)
+    fetch('http://127.0.0.1:8000/api/v1/barrit/auth/register/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.key) {
+          localStorage.clear();
+          localStorage.setItem('token', data.key);
+          window.location.replace('http://localhost:8081/dashboard');
+        } else {
+          setEmail('');
+          setPassword1('');
+          setPassword2('');
+          setUsername('');
+          localStorage.clear();
+          setErrors(true);
         }
-    }, [errors])
+      });
+  };
 
   return (
-    <div className="container">
-        <div className="app-wrapper">
-            <div>
-                <h2 className="title">Create Account</h2>
-            </div>
-            <form className="form-wrapper">
-                <div className="name">
-                    <label className='label'> Name</label>
-                    <input className="input" type="text" name="name" value={values.name} onChange={handleChange} />
-                    {errors.name && <p className="error">{errors.name}</p>}
-                </div>
-                <div className="email">
-                    <label className='label'> Email</label>
-                    <input className="input" type="email" name="email" value={values.email} onChange={handleChange}/>
-                    {errors.email && <p className="error">{errors.email}</p>}
-                </div>
-                <div className="password">
-                    <label className='label'> Password</label>
-                    <input className="input" type="password" name="password" value={values.password} onChange={handleChange}/>
-                    {errors.password && <p className="error">{errors.password}</p>}
-                </div>
-                <div>
-                    <button className="submit" onClick={handleFormSubmit}>Sign up </button>
-                </div>
-            </form>
-        </div>
+    <div>
+      {loading === false && <h1>Signup</h1>}
+      {errors === true && <h2>Cannot signup with provided credentials</h2>}
+      <form onSubmit={onSubmit}>
+        <label htmlFor='username'>Username:</label> <br />
+        <input
+          name='username'
+          type='username'
+          value={username}
+          onChange={e => setUsername(e.target.value)}
+          required
+        />{' '}
+        <br />
+        <label htmlFor='email'>Email:</label> <br />
+        <input
+          name='email'
+          type='email'
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+        />{' '}
+        <br />
+        <label htmlFor='password1'>Password:</label> <br />
+        <input
+          name='password1'
+          type='password'
+          value={password1}
+          onChange={e => setPassword1(e.target.value)}
+          required
+        />{' '}
+        <br />
+        <label htmlFor='password2'>Confirm password:</label> <br />
+        <input
+          name='password2'
+          type='password'
+          value={password2}
+          onChange={e => setPassword2(e.target.value)}
+          required
+        />{' '}
+        <br />
+        <input type='submit' value='Signup' />
+      </form>
     </div>
-  )
-}
+  );
+};
