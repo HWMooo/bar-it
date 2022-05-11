@@ -14,6 +14,7 @@ function NEWSCANNER() {
     const { speak } = useSpeechSynthesis();
     const [cameraTypes, setCameraTypes] = useState([]);
     const msg = new SpeechSynthesisUtterance()
+    let array = []
     msg.text = description
 
     useEffect(() => {
@@ -51,7 +52,6 @@ function NEWSCANNER() {
 
     useEffect(() => {
         startScanner()
-        let array = []
         console.log("if you dont see this something is odd with netlify")
         navigator.mediaDevices.enumerateDevices()
             .then(function (devices) {
@@ -59,8 +59,8 @@ function NEWSCANNER() {
                     alert(device.kind + ": " + device.label +
                         " id = " + device.deviceId);
                         array.push(device.deviceId)
+                        console.log(array)
                         setCameraTypes(array)
-
                 }
 
                 
@@ -78,7 +78,8 @@ function NEWSCANNER() {
         }
     }, [scannerRunning])
 
-    //alert("cameraTypes[4]", cameraTypes[4])
+    console.log("cameraTypes[1] :", cameraTypes[1])
+    console.log("cameratypes = ", cameraTypes)
 
     function startScanner() {
         console.log("if you dont see this something is odd with netlify")
@@ -93,8 +94,8 @@ function NEWSCANNER() {
                     height: 320,
                     facingMode: "enviroment",
                     focusMode: 'continuous',
-                    cameraid: cameraTypes[4],
-                    sourceId : cameraTypes[4]
+                    cameraid: cameraTypes[3],
+                    sourceId : cameraTypes[3]
                 },
             },
             decoder: {
