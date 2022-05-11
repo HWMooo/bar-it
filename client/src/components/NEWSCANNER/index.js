@@ -71,10 +71,11 @@ function NEWSCANNER() {
     useEffect(() => {
         if (barCode) {
             getInfo()
-            setBarCode("")
+            alert("cameraTypes[4]", cameraTypes[4])
         }
     }, [scannerRunning])
 
+    console.log()
 
     function startScanner() {
         console.log("if you dont see this something is odd with netlify")
