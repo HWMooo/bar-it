@@ -6,7 +6,7 @@ import axios from 'axios';
 
 
 
-function BCS() {
+function BCS(props) {
     const [scannerRunning, setScannerRunning] = useState(false);
     const [barCode, setBarCode] = useState("");
     const [description, setDescription] = useState("");
@@ -163,8 +163,8 @@ function BCS() {
     function onClick(){
         if(scannerRunning){
             document.querySelector('#scanner-container').style.display = "none";
-            setScannerRunning(false)
             Quagga.stop();
+            setScannerRunning(false)
         }
         else{
             document.querySelector('#scanner-container').style.display = "block";
