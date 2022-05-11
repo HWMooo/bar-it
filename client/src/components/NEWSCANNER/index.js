@@ -170,6 +170,7 @@ function NEWSCANNER() {
                 counter++
                 if(counter % 500 === 0){
                     setDescription("no barcode has been detected")
+                    counter = 0
                 }
             }
 
