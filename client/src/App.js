@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { NavBar } from "./components/index";
 import { About, Home, Settings, NotFound, PreviousSearch, SignUp, LoginPage, LogoutPage, Dashboard } from './pages/index';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
