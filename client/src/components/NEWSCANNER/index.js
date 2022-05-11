@@ -12,6 +12,7 @@ function NEWSCANNER() {
     const [barCode, setBarCode] = useState("");
     const [description, setDescription] = useState("");
     const { speak } = useSpeechSynthesis();
+    const [cameraTypes, setCameraTypes] = useState([]);
     const msg = new SpeechSynthesisUtterance()
     msg.text = description
 
@@ -56,6 +57,9 @@ function NEWSCANNER() {
                 devices.forEach(function (device) {
                     alert(device.kind + ": " + device.label +
                         " id = " + device.deviceId);
+                        let array = []
+                        array.push(device.deviceId)
+                        setCameraTypes(array)
                 });
             })
             .catch(function (err) {
@@ -81,10 +85,11 @@ function NEWSCANNER() {
                 type: "LiveStream",
                 target: document.querySelector('#scanner-container'),
                 constraints: {
-                    width: 1000,
-                    height: 1000,
+                    width: 640,
+                    height: 480,
                     facingMode: "enviroment",
-                    focusMode: 'continuous'
+                    focusMode: 'continuous',
+                    cameraid: cameraTypes[3]
                 },
             },
             decoder: {
