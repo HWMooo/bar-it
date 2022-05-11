@@ -70,10 +70,10 @@ function BCS(props) {
                 target: document.querySelector('#scanner-container'),
                 constraints: {
                     width: 1980,
-                    height: 1080,
-                    facingMode: "environment",
+                    height: 1980,
+                    facingMode: "user",
                     focusMode: 'continuous',
-                    cameraId: 1
+                    cameraId: 2
                 },
             },
             decoder: {
