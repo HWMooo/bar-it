@@ -69,7 +69,7 @@ function BCS() {
           constraints: {
             width: 640,
             height: 480,
-            facingMode: 'environment', // or user
+            facingMode: 'user', // or user
           },
         },
         locator: {
