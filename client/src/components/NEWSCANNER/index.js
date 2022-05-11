@@ -89,7 +89,8 @@ function NEWSCANNER() {
                     height: 320,
                     facingMode: "enviroment",
                     //focusMode: 'continuous',
-                    //cameraid: cameraTypes[4]
+                    //cameraid: 
+                    sourceId : cameraTypes[4]
                 },
             },
             decoder: {
@@ -199,7 +200,7 @@ function NEWSCANNER() {
         <input type="button" id="btn" value="Start/Stop the scanner" onClick={onClick} />
         <h1>barcode: {barCode}</h1>
         <h1>barcode: {barCode}</h1>
-        <h3>changes</h3>
+        <h3>changes here</h3>
 
 
 
