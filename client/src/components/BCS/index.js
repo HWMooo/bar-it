@@ -66,9 +66,9 @@ function BCS() {
                 inputStream: {
         type: "LiveStream",
         constraints: {
-            width: 640,
-            height: 480,
-            facing: "user" // or user
+            width: 1980,
+            height: 1080,
+            facing: "enviroment" // or user
         }
     },
 
