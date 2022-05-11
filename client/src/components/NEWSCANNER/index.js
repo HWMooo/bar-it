@@ -3,10 +3,11 @@ import React, { useState } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
 import { useEffect } from "react"
 import axios from 'axios';
+//import './styles.css'
 
 
 
-function BCS() {
+function NEWSCANNER() {
     const [scannerRunning, setScannerRunning] = useState(false);
     const [barCode, setBarCode] = useState("");
     const [description, setDescription] = useState("");
@@ -18,11 +19,11 @@ function BCS() {
         window.speechSynthesis.speak(msg)
     }, [description])
 
-    async function getInfo(){
+    async function getInfo() {
 
-        try{
+        try {
             const proxyurl = "https://cors-anywhere.herokuapp.com/"
-            const response    = await axios.get(`${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=n5ztt93jii7dem2cwhbupg9mpi8xen`)
+            const response = await axios.get(`${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=n5ztt93jii7dem2cwhbupg9mpi8xen`)
             setDescription(response.data.products[0].description)
             console.log("response.data in getInfo", response.data.products[0].title)
             console.log("response.data in getInfo", response.data.products[0].brand)
@@ -36,7 +37,7 @@ function BCS() {
             return response
 
         }
-        catch (err){
+        catch (err) {
             setDescription("Sorry, i dont have that in my database, please try again")
             setBarCode("")
             setDescription("")
@@ -49,11 +50,22 @@ function BCS() {
 
     useEffect(() => {
         startScanner()
+        console.log("if you dont see this something is odd with netlify")
+        navigator.mediaDevices.enumerateDevices()
+            .then(function (devices) {
+                devices.forEach(function (device) {
+                    alert(device.kind + ": " + device.label +
+                        " id = " + device.deviceId);
+                });
+            })
+            .catch(function (err) {
+                console.log(err.name + ": " + err.message);
+            });
     }, [])
 
 
     useEffect(() => {
-        if(barCode){
+        if (barCode) {
             getInfo()
             setBarCode("")
         }
@@ -61,6 +73,7 @@ function BCS() {
 
 
     function startScanner() {
+        console.log("if you dont see this something is odd with netlify")
         let counter = 0
         Quagga.init({
             inputStream: {
@@ -68,9 +81,10 @@ function BCS() {
                 type: "LiveStream",
                 target: document.querySelector('#scanner-container'),
                 constraints: {
-                    width: 480,
-                    height: 320,
-                    facingMode: "environment"
+                    width: 1000,
+                    height: 1000,
+                    facingMode: "user",
+                    focusMode: 'continuous'
                 },
             },
             decoder: {
@@ -100,6 +114,7 @@ function BCS() {
             }
 
             console.log("Process starting");
+            console.log("it loads from here?")
             Quagga.start();
             setScannerRunning(true)
             document.querySelector('canvas').style.display = "inline";
@@ -107,40 +122,40 @@ function BCS() {
 
         Quagga.onProcessed(function (result) {
             let drawingCtx = Quagga.canvas.ctx.overlay,
-            drawingCanvas = Quagga.canvas.dom.overlay;
+                drawingCanvas = Quagga.canvas.dom.overlay;
             if (result) {
                 setDescription("barcode detected")
                 if (result.boxes) {
                     drawingCtx.clearRect(0, 0,
-                        parseInt(drawingCanvas.getAttribute("width")), 
+                        parseInt(drawingCanvas.getAttribute("width")),
                         parseInt(drawingCanvas.getAttribute("height")));
                     result.boxes.filter(function (box) {
                         return box !== result.box;
                     }).forEach(function (box) {
-                        Quagga.ImageDebug.drawPath(box, 
-                            { x: 0, y: 1 }, 
-                            drawingCtx, 
+                        Quagga.ImageDebug.drawPath(box,
+                            { x: 0, y: 1 },
+                            drawingCtx,
                             { color: "green", lineWidth: 2 });
                     });
                 }
 
                 if (result.box) {
-                    Quagga.ImageDebug.drawPath(result.box, 
-                        { x: 0, y: 1 }, 
-                        drawingCtx, 
+                    Quagga.ImageDebug.drawPath(result.box,
+                        { x: 0, y: 1 },
+                        drawingCtx,
                         { color: "blue", lineWidth: 2 });
                 }
 
                 if (result.codeResult && result.codeResult.code) {
-                    Quagga.ImageDebug.drawPath(result.line, 
-                        { x: 'x', y: 'y' }, 
-                        drawingCtx, 
+                    Quagga.ImageDebug.drawPath(result.line,
+                        { x: 'x', y: 'y' },
+                        drawingCtx,
                         { color: 'red', lineWidth: 3 });
                 }
             }
-            else{
+            else {
                 counter++
-                if(counter % 500 === 0){
+                if (counter % 500 === 0) {
                     setDescription("no barcode has been detected")
                 }
             }
@@ -158,13 +173,13 @@ function BCS() {
         });
     }
 
-    function onClick(){
-        if(scannerRunning){
+    function onClick() {
+        if (scannerRunning) {
             document.querySelector('#scanner-container').style.display = "none";
-            setScannerRunning(false)
             Quagga.stop();
+            setScannerRunning(false)
         }
-        else{
+        else {
             document.querySelector('#scanner-container').style.display = "block";
             startScanner()
         }
@@ -173,15 +188,18 @@ function BCS() {
 
 
 
-    return(<>
+    return (<>
 
-    <section id="scanner-container"></section>
-    <input type="button" id="btn" value="Start/Stop the scanner" onClick={onClick}/>
-    <h1>barcode: {barCode}</h1>
-    
-    
-    
-    
+        <section id="scanner-container"></section>
+        <input type="button" id="btn" value="Start/Stop the scanner" onClick={onClick} />
+        <h1>barcode: {barCode}</h1>
+        <h1>barcode: {barCode}</h1>
+        <h3>changes</h3>
+
+
+
+
+
     </>)
 
 
@@ -189,4 +207,4 @@ function BCS() {
 
 
 
-export default BCS;
+export default NEWSCANNER;
