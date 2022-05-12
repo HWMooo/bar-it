@@ -94,7 +94,7 @@ function NEWSCANNER() {
                     //facingMode: "user",
                     //cameraId : cameraTypes[1],
                     //sourceId : cameraTypes[1]
-                    deviceId: "" + cameraTypes[4]
+                    deviceId: "" + cameraTypes[cameraTypes.length-2]
 
 
                 },
