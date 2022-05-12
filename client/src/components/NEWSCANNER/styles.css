@@ -2,6 +2,7 @@ canvas.drawing, canvas.drawingBuffer {
 
     position: absolute;
     left:0
+    
 
 
 }
@@ -43,5 +44,20 @@ canvas.drawing, canvas.drawingBuffer {
     #scanner-container{
         overflow: visible;
     }
+
+  }
+
+
+  @media only screen and (max-width: 600px) {
+    canvas.drawing, canvas.drawingBuffer {
+
+        position: absolute;
+        left:0;
+        transform: translateY(-250px);
+        
+    
+    
+    }
+
 
   }
