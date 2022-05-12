@@ -87,7 +87,12 @@ function NEWSCANNER() {
                 
                 );
             })
-            .then(() => {startScanner()})
+            .then(() => {
+                startScanner()
+                Quagga.stop()
+                startScanner()
+
+            })
             .catch(function (err) {
                 console.log(err.name + ": " + err.message);
             });
@@ -120,7 +125,6 @@ function NEWSCANNER() {
                 constraints: {
                     width: 680,
                     height: 420,
-                    facingMode:"environment",
                     deviceId: "" + cameraTypes[cameraTypes.length-2]
 
 
