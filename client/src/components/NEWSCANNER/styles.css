@@ -55,6 +55,9 @@ canvas.drawing, canvas.drawingBuffer {
         position: absolute;
         left:0;
         transform: translateY(-630px);
+        width: 400px;
+        height: 600px;
+        overflow: hidden;
         
     
     
