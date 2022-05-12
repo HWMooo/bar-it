@@ -1,7 +1,9 @@
 canvas.drawing, canvas.drawingBuffer {
 
     position: absolute;
-    transform: translateX(-352px);
+    transform: translateX(-640px);
+    width: 400px;
+    height: 370px
 
 }
 
