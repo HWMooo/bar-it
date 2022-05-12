@@ -12,6 +12,8 @@ function NEWSCANNER() {
     const [scannerRunning, setScannerRunning] = useState(false);
     const [barCode, setBarCode] = useState("");
     const [description, setDescription] = useState("");
+    const [title, setTitle] = useState("");
+    const [brand, setBrand] = useState("");
     const { speak } = useSpeechSynthesis();
     const [cameraTypes, setCameraTypes] = useState([]);
     const msg = new SpeechSynthesisUtterance()
@@ -26,15 +28,17 @@ function NEWSCANNER() {
 
         try {
             const proxyurl = "https://cors-anywhere.herokuapp.com/"
-            const response = await axios.get(`${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=n5ztt93jii7dem2cwhbupg9mpi8xen`)
+            const response = await axios.get(`${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=cridshb84a0w9xtez2xcnptmryx8xb`)
             setDescription(response.data.products[0].description)
-            console.log("response.data in getInfo", response.data.products[0].title)
-            console.log("response.data in getInfo", response.data.products[0].brand)
+            //console.log("response.data in getInfo", response.data.products[0].title)
+            //console.log("response.data in getInfo", response.data.products[0].brand)
+            setTitle(response.data.products[0].title)
+            setBrand(response.data.products[0].brand)
             // console.log("response.data in getInfo", response.data.products[0].category)
             // console.log("response.data in getInfo", response.data.products[0].stores)
-            const productinfo = await response.data.products
-            setDescription(response.data.products[0].title)
-            setDescription(response.data.products[0].brand)
+            //const productinfo = await response.data.products
+            //setDescription(response.data.products[0].title)
+            //setDescription(response.data.products[0].brand)
             // setDescription(response.data.products[0].category)
             // setDescription(response.data.products[0].stores)
             return response
@@ -312,15 +316,20 @@ function NEWSCANNER() {
 
 
     return (<>
+    <section id="includeinfocontainer">
     <section id="total-container">
         <section id="scanner-container">
         </section>
         <input type="text" id="googleSearch"/>
         <input type="button" id="btn" value="Start/Stop the scanner" onClick={onClick}/>
         </section>
+        <section id="actualinfo">
         <h1>barcode: {barCode}</h1>
-        <h1>barcode: {barCode}</h1>
-        <h3>changes seen here</h3>
+        <h1>Description: {description}</h1>
+        <h1>Title: {title}</h1>
+        <h1>Brand: {brand}</h1>
+        </section>
+        </section>
 
 
 

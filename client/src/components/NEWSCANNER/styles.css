@@ -45,6 +45,45 @@ canvas.drawing, canvas.drawingBuffer {
 @media only screen and (min-width: 700px) {
     #scanner-container{
         overflow: visible;
+        width: 640px;
+        height: 480px;
+
+    }
+
+    #total-container{
+        width: 650px;
+        height: 490px;
+        display: flex !important;
+        align-items:flex-end;
+        justify-content: center;
+        flex-direction: column;
+        row-gap: 10px;
+        background-color: aqua;
+        overflow: visible;
+    
+    }
+
+    #btn{
+        width: 650px;
+    
+    }
+    
+    #googleSearch{
+        width: 640px;
+    }
+
+    #includeinfocontainer{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items:center;
+
+    }
+
+    #actualinfo{
+        width: 650px;
+        height: 490px;
+
     }
 
   }
