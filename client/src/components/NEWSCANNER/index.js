@@ -89,7 +89,7 @@ function NEWSCANNER() {
             })
             .then(() => {
                 startScanner()
-                Quagga.stop()
+                await Quagga.stop()
                 startScanner()
 
             })
