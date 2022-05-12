@@ -37,6 +37,7 @@ canvas.drawing, canvas.drawingBuffer {
     background-color: aqua;
     padding: 5px;
     margin-left: -5px;
+    overflow: hidden;
 
 }
 
@@ -54,7 +55,6 @@ canvas.drawing, canvas.drawingBuffer {
         position: absolute;
         left:0;
         transform: translateY(-630px);
-        overflow: hidden;
         
     
     
