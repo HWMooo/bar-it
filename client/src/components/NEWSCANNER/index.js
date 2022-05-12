@@ -71,11 +71,11 @@ function NEWSCANNER() {
 
     }
 
-    useEffect(() => {
+    useEffect(async () => {
         //startScanner()
         console.log("if you dont see this something is odd with netlify")
-        navigator.mediaDevices.enumerateDevices()
-            .then(function (devices) {
+        let result = navigator.mediaDevices.enumerateDevices()
+            result.then(function (devices) {
                 devices.forEach(function (device) {
                     console.log(device.kind + ": " + device.label +
                         " id = " + device.deviceId);
