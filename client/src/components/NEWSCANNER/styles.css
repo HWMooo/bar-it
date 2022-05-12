@@ -1,7 +1,8 @@
 canvas.drawing, canvas.drawingBuffer {
 
     position: absolute;
-    left:0
+    left:0;
+    display: none;
     
 
 
@@ -48,22 +49,3 @@ canvas.drawing, canvas.drawingBuffer {
 
   }
 
-
-  @media only screen and (max-width: 600px) {
-    canvas.drawing, canvas.drawingBuffer {
-
-        position: absolute;
-        left:0;
-        transform: translateY(-640px);
-        width: 400px;
-        height: 370px;
-        overflow: hidden;
-        box-sizing: border-box;
-        border-color: black;
-        
-    
-    
-    }
-
-
-  }
