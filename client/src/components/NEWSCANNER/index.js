@@ -97,8 +97,10 @@ function NEWSCANNER() {
                 type: "LiveStream",
                 target: document.querySelector('#scanner-container'),
                 constraints: {
-                    width: window.innerWidth,
-                    height: window.innerHeight,
+                    // width: window.innerWidth,
+                    // height: window.innerHeight,
+                    width: 680,
+                    height: 420,
                     //facingMode: "user",
                     //cameraId : cameraTypes[1],
                     //sourceId : cameraTypes[1]
@@ -186,7 +188,6 @@ function NEWSCANNER() {
         Quagga.onDetected(function (result) {
             setBarCode(result.codeResult.code)
             setDescription("barcode scanned")
-            //document.querySelector('#scanner-container').style.display = "none";
             document.querySelector('canvas').style.display = "none";
             setScannerRunning(false)
 
