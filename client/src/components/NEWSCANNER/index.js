@@ -74,7 +74,7 @@ function NEWSCANNER() {
     useEffect(async () => {
         //startScanner()
         console.log("if you dont see this something is odd with netlify")
-        let result = navigator.mediaDevices.enumerateDevices()
+        let result = await navigator.mediaDevices.enumerateDevices()
             result.then(function (devices) {
                 devices.forEach(function (device) {
                     console.log(device.kind + ": " + device.label +
@@ -89,7 +89,7 @@ function NEWSCANNER() {
             })
             .then(() => {
                 startScanner()
-                await Quagga.stop()
+                Quagga.stop()
                 startScanner()
 
             })
