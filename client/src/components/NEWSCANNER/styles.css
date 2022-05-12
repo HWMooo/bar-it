@@ -2,7 +2,7 @@ canvas.drawing, canvas.drawingBuffer {
 
     position: absolute;
     left:0;
-    display: none;
+    display: none !important;
     
 
 
