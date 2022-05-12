@@ -340,7 +340,7 @@ function NEWSCANNER() {
         <section id="scanner-container">
         </section>
         <input type="text" id="googleSearch"/>
-        <input type="button" id="btn" value="Start/Stop the scanner" onClick={onClick}/>
+        <input type="button" id="btn" value={scannerRunning ? "Stop" : "Start"} onClick={onClick}/>
         </section>
         <section id="actualinfo">
         <h1>barcode: {barCode}</h1>
