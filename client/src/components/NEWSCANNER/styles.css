@@ -6,8 +6,9 @@ canvas.drawing, canvas.drawingBuffer {
 }
 
 #scanner-container{
-    width: 640px;
-    height: 480px;
+    width: 352px;
+    height: 288px;
+    overflow: hidden;
 }
 
 
@@ -21,11 +22,15 @@ canvas.drawing, canvas.drawingBuffer {
     width: 100%;
 }
 
+video{
+    width: 352px;
+    height: 288px;
 
+}
 
 #total-container{
-    width: 640px;
-    height: 480px;
+    width: 95vw;
+    height: 45vh;
     display: flex !important;
     align-items: center;
     justify-content: center;
