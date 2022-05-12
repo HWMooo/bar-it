@@ -120,7 +120,7 @@ function NEWSCANNER() {
                 constraints: {
                     width: 680,
                     height: 420,
-                    facingMode:"environment"
+                    facingMode:"environment",
                     deviceId: "" + cameraTypes[cameraTypes.length-2]
 
 
