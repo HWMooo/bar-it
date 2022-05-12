@@ -71,31 +71,71 @@ function NEWSCANNER() {
 
     }
 
-    useEffect(async () => {
+    useEffect( () => {
         //startScanner()
-        console.log("if you dont see this something is odd with netlify")
-        let result = await navigator.mediaDevices.enumerateDevices()
-            result.then(function (devices) {
-                devices.forEach(function (device) {
-                    console.log(device.kind + ": " + device.label +
-                        " id = " + device.deviceId);
-                        array.push(device.deviceId)
-                        console.log(array)
-                        setCameraTypes(array)
-                }
+        async function getDevices () {
+            let result = await navigator.mediaDevices.enumerateDevices()
+            result.forEach(function (device) {
+                console.log(device.kind + ": " + device.label +
+                    " id = " + device.deviceId);
+                    array.push(device.deviceId)
+                    console.log(array)
+                    setCameraTypes(array)
+            }
+
+            
+            );
+            startScanner()
+            Quagga.stop()
+            startScanner()
+
+            // result.then(function (devices) {
+            //     devices.forEach(function (device) {
+            //         console.log(device.kind + ": " + device.label +
+            //             " id = " + device.deviceId);
+            //             array.push(device.deviceId)
+            //             console.log(array)
+            //             setCameraTypes(array)
+            //     }
 
                 
-                );
-            })
-            .then(() => {
-                startScanner()
-                Quagga.stop()
-                startScanner()
+            //     );
+            // })
+            // .then(() => {
+            //     startScanner()
+            //     Quagga.stop()
+            //     startScanner()
 
-            })
-            .catch(function (err) {
-                console.log(err.name + ": " + err.message);
-            });
+            // })
+            // .catch(function (err) {
+            //     console.log(err.name + ": " + err.message);
+            // });
+
+        }
+        getDevices()
+        //console.log("if you dont see this something is odd with netlify")
+        // l//et result = await navigator.mediaDevices.enumerateDevices()
+        //     result.then(function (devices) {
+        //         devices.forEach(function (device) {
+        //             console.log(device.kind + ": " + device.label +
+        //                 " id = " + device.deviceId);
+        //                 array.push(device.deviceId)
+        //                 console.log(array)
+        //                 setCameraTypes(array)
+        //         }
+
+                
+        //         );
+        //     })
+        //     .then(() => {
+        //         startScanner()
+        //         Quagga.stop()
+        //         startScanner()
+
+        //     })
+        //     .catch(function (err) {
+        //         console.log(err.name + ": " + err.message);
+        //     });
     }, [])
 
 
