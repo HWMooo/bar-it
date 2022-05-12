@@ -85,9 +85,6 @@ function NEWSCANNER() {
 
             
             );
-            startScanner()
-            Quagga.stop()
-            startScanner()
 
             // result.then(function (devices) {
             //     devices.forEach(function (device) {
