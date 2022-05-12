@@ -20,6 +20,10 @@ function NEWSCANNER() {
     let array = []
     msg.text = description
 
+
+
+
+
     useEffect(() => {
         window.speechSynthesis.speak(msg)
     }, [description])
@@ -29,11 +33,23 @@ function NEWSCANNER() {
         try {
             const proxyurl = "https://cors-anywhere.herokuapp.com/"
             const response = await axios.get(`${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=cridshb84a0w9xtez2xcnptmryx8xb`)
-            setDescription(response.data.products[0].description)
-            //console.log("response.data in getInfo", response.data.products[0].title)
-            //console.log("response.data in getInfo", response.data.products[0].brand)
+            if (localStorage.getItem('audiodescription') === 'true') {
+                setDescription(response.data.products[0].description)
+            }
+            else{setDescription('')}
+            // setDescription(response.data.products[0].category)
+            // setDescription(response.data.products[0].stores)
+
             setTitle(response.data.products[0].title)
             setBrand(response.data.products[0].brand)
+            return response
+
+        }
+            
+            //setDescription(response.data.products[0].description)
+            //console.log("response.data in getInfo", response.data.products[0].title)
+            //console.log("response.data in getInfo", response.data.products[0].brand)
+
             // console.log("response.data in getInfo", response.data.products[0].category)
             // console.log("response.data in getInfo", response.data.products[0].stores)
             //const productinfo = await response.data.products
@@ -41,9 +57,9 @@ function NEWSCANNER() {
             //setDescription(response.data.products[0].brand)
             // setDescription(response.data.products[0].category)
             // setDescription(response.data.products[0].stores)
-            return response
 
-        }
+
+
         catch (err) {
             setDescription("Sorry, i dont have that in my database, please try again")
             setBarCode("")
@@ -71,6 +87,7 @@ function NEWSCANNER() {
                 
                 );
             })
+            .then(() => {startScanner()})
             .catch(function (err) {
                 console.log(err.name + ": " + err.message);
             });
@@ -101,13 +118,8 @@ function NEWSCANNER() {
                 type: "LiveStream",
                 target: document.querySelector('#scanner-container'),
                 constraints: {
-                    // width: window.innerWidth,
-                    // height: window.innerHeight,
                     width: 680,
                     height: 420,
-                    //facingMode: "user",
-                    //cameraId : cameraTypes[1],
-                    //sourceId : cameraTypes[1]
                     deviceId: "" + cameraTypes[cameraTypes.length-2]
 
 
@@ -137,13 +149,14 @@ function NEWSCANNER() {
 
         }, function (err) {
             if (err) {
-                console.log("this is the error", err);
+                console.log(err);
                 return
             }
 
-            console.log("Process starting");
+
             Quagga.start();
             setScannerRunning(true)
+            setDescription("scanning started");
             document.querySelector('canvas').style.display = "inline";
         });
 
@@ -151,7 +164,10 @@ function NEWSCANNER() {
             let drawingCtx = Quagga.canvas.ctx.overlay,
             drawingCanvas = Quagga.canvas.dom.overlay;
             if (result) {
-                setDescription("barcode detected")
+                if (localStorage.getItem('audiodescription') === 'true') {
+                    setDescription("barcode detected");
+                }
+                else{setDescription('')}
                 if (result.boxes) {
                     drawingCtx.clearRect(0, 0,
                         parseInt(drawingCanvas.getAttribute("width")), 
@@ -183,16 +199,18 @@ function NEWSCANNER() {
             else{
                 counter++
                 if(counter % 500 === 0){
-                    setDescription("no barcode has been detected")
-                    counter = 0
+                    if (localStorage.getItem('audiodescription') === 'true') {
+                        setDescription("no barcode has been detected");
+                    }
+                    else{setDescription('')}
                 }
+                // setDescription("no barcode has been detected")
             }
 
         });
         Quagga.onDetected(function (result) {
             setBarCode(result.codeResult.code)
             setDescription("barcode scanned")
-            document.querySelector('canvas').style.display = "none";
             setScannerRunning(false)
 
             Quagga.stop();
