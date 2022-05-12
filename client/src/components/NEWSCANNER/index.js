@@ -51,7 +51,7 @@ function NEWSCANNER() {
     }
 
     useEffect(() => {
-        startScanner()
+        //startScanner()
         console.log("if you dont see this something is odd with netlify")
         navigator.mediaDevices.enumerateDevices()
             .then(function (devices) {
