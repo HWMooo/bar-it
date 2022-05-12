@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
 import { useEffect } from "react"
 import axios from 'axios';
-//import './styles.css'
+import './styles.css'
+import { useHref } from 'react-router-dom';
 
 
 
@@ -44,7 +45,7 @@ function NEWSCANNER() {
             setBarCode("")
             setDescription("")
             startScanner()
-            document.querySelector('#scanner-container').style.display = "block";
+            //document.querySelector('#scanner-container').style.display = "block";
             return err
         }
 
@@ -78,6 +79,13 @@ function NEWSCANNER() {
         }
     }, [scannerRunning])
 
+
+    // function searchGoogle (input){
+        
+    //     location.href = `www.google.com/${input}`
+
+    // }
+
     // console.log("cameraTypes[1] :", cameraTypes[1])
     // console.log("cameratypes = ", cameraTypes)
 
@@ -89,8 +97,8 @@ function NEWSCANNER() {
                 type: "LiveStream",
                 target: document.querySelector('#scanner-container'),
                 constraints: {
-                    width: 640,
-                    height: 480,
+                    width: 480,
+                    height: 320,
                     //facingMode: "user",
                     //cameraId : cameraTypes[1],
                     //sourceId : cameraTypes[1]
@@ -178,7 +186,7 @@ function NEWSCANNER() {
         Quagga.onDetected(function (result) {
             setBarCode(result.codeResult.code)
             setDescription("barcode scanned")
-            document.querySelector('#scanner-container').style.display = "none";
+            //document.querySelector('#scanner-container').style.display = "none";
             document.querySelector('canvas').style.display = "none";
             setScannerRunning(false)
 
@@ -289,7 +297,7 @@ function NEWSCANNER() {
 
     function onClick() {
         if (scannerRunning) {
-            document.querySelector('#scanner-container').style.display = "none";
+            //document.querySelector('#scanner-container').style.display = "none";
             Quagga.stop();
             setScannerRunning(false)
         }
@@ -303,9 +311,12 @@ function NEWSCANNER() {
 
 
     return (<>
-
-        <section id="scanner-container"></section>
-        <input type="button" id="btn" value="Start/Stop the scanner" onClick={onClick} />
+    <section id="total-container">
+        <section id="scanner-container">
+        </section>
+        <input type="text" id="googleSearch"/>
+        <input type="button" id="btn" value="Start/Stop the scanner" onClick={onClick}/>
+        </section>
         <h1>barcode: {barCode}</h1>
         <h1>barcode: {barCode}</h1>
         <h3>changes seen here</h3>

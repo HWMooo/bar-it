@@ -1,0 +1,42 @@
+canvas.drawing, canvas.drawingBuffer {
+
+    position: absolute;
+    transform: translateX(-352px);
+
+}
+
+#scanner-container{
+    width: 352px;
+    height: 288px;
+}
+
+
+
+#btn{
+    width: 100%;
+
+}
+
+#googleSearch{
+    width: 100%;
+}
+
+video{
+    width: 352px;
+    height: 288px;
+
+}
+
+#total-container{
+    width: 95vw;
+    height: 45vh;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 10px;
+    background-color: aqua;
+    padding: 5px;
+    margin-left: -5px;
+
+}
