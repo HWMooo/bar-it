@@ -97,8 +97,8 @@ function NEWSCANNER() {
                 type: "LiveStream",
                 target: document.querySelector('#scanner-container'),
                 constraints: {
-                    width: 640,
-                    height: 480,
+                    width: window.innerWidth,
+                    height: window.innerHeight,
                     //facingMode: "user",
                     //cameraId : cameraTypes[1],
                     //sourceId : cameraTypes[1]
