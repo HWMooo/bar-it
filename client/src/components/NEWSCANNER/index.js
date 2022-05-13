@@ -72,7 +72,7 @@ function NEWSCANNER() {
     }
 
     useEffect( () => {
-        //startScanner()
+        startScanner()
         async function getDevices () {
             let result = await navigator.mediaDevices.enumerateDevices()
             result.forEach(function (device) {
@@ -162,6 +162,7 @@ function NEWSCANNER() {
                 constraints: {
                     width: 680,
                     height: 420,
+                    facingMode:"environment",
                     deviceId: "" + cameraTypes[cameraTypes.length-2]
 
 
