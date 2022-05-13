@@ -163,7 +163,7 @@ function NEWSCANNER() {
                     width: 680,
                     height: 420,
                     facingMode:"environment",
-                    //deviceId: "" + cameraTypes[cameraTypes.length-2]
+                    deviceId: ameraTypes[cameraTypes.length-2]
 
 
                 },
